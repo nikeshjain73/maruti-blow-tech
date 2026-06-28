@@ -3,6 +3,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { toast } from "sonner";
+import { createServerFn } from "@tanstack/react-start";
 import { supabase } from "@/integrations/supabase/client";
 import { products } from "@/lib/products";
 
@@ -33,6 +34,78 @@ const inquirySchema = z.object({
   product_interest: z.string().max(100).optional().or(z.literal("")),
   message: z.string().trim().min(1, "Message is required").max(2000),
 });
+
+export const sendEmailFn = createServerFn({ method: "POST" })
+  .validator((data: z.infer<typeof inquirySchema>) => data)
+  .handler(async ({ data }) => {
+    try {
+      const nodemailer = (await import("nodemailer")).default;
+      
+      const user = process.env.EMAIL_USER || "your-email@gmail.com";
+      const pass = process.env.EMAIL_PASS || "your-app-password";
+
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user,
+          pass,
+        },
+      });
+
+      const mailOptions = {
+        from: `<${user}>`,
+        to: process.env.RECEIVER_EMAIL || user,
+        subject: `New Inquiry from ${data.name}`,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
+            <div style="background-color: #0b1d3a; padding: 20px; text-align: center;">
+              <h2 style="color: #ffffff; margin: 0; font-size: 22px;">New Website Inquiry</h2>
+            </div>
+            <div style="padding: 20px; background-color: #f9fafb;">
+              <p style="font-size: 16px; color: #333333; margin-bottom: 20px;">You have received a new message from the contact form.</p>
+              
+              <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                <tbody>
+                  <tr style="border-bottom: 1px solid #eeeeee;">
+                    <td style="padding: 12px 15px; font-weight: bold; width: 140px; color: #555555; background-color: #f4f6f8;">Name</td>
+                    <td style="padding: 12px 15px; color: #111111;">${data.name}</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #eeeeee;">
+                    <td style="padding: 12px 15px; font-weight: bold; color: #555555; background-color: #f4f6f8;">Email</td>
+                    <td style="padding: 12px 15px; color: #111111;"><a href="mailto:${data.email}" style="color: #d13038; text-decoration: none;">${data.email}</a></td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #eeeeee;">
+                    <td style="padding: 12px 15px; font-weight: bold; color: #555555; background-color: #f4f6f8;">Phone</td>
+                    <td style="padding: 12px 15px; color: #111111;">${data.phone || "N/A"}</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #eeeeee;">
+                    <td style="padding: 12px 15px; font-weight: bold; color: #555555; background-color: #f4f6f8;">Company</td>
+                    <td style="padding: 12px 15px; color: #111111;">${data.company || "N/A"}</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid #eeeeee;">
+                    <td style="padding: 12px 15px; font-weight: bold; color: #555555; background-color: #f4f6f8;">Product</td>
+                    <td style="padding: 12px 15px; color: #111111;">${data.product_interest || "N/A"}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h3 style="color: #0b1d3a; margin-bottom: 10px; font-size: 16px;">Message:</h3>
+              <div style="background-color: #ffffff; padding: 15px; border-left: 4px solid #d13038; border-radius: 4px; color: #333333; white-space: pre-wrap; line-height: 1.6; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">${data.message}</div>
+            </div>
+            <div style="background-color: #eeeeee; padding: 15px; text-align: center; font-size: 12px; color: #777777;">
+              This email was automatically generated from the Maruti Blow Tech website contact form.
+            </div>
+          </div>
+        `,
+      };
+
+      await transporter.sendMail(mailOptions);
+      return { success: true };
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      throw new Error("Failed to send email");
+    }
+  });
 
 function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
@@ -65,15 +138,24 @@ function ContactPage() {
       product_interest: parsed.data.product_interest || null,
       message: parsed.data.message,
     });
-    setSubmitting(false);
 
     if (error) {
       console.error(error);
       toast.error("Couldn't send your inquiry. Please try again or call us directly.");
+      setSubmitting(false);
       return;
     }
-    toast.success("Inquiry sent. Our sales team will be in touch shortly.");
-    form.reset();
+
+    try {
+      await sendEmailFn({ data: parsed.data });
+      toast.success("Inquiry sent. Our sales team will be in touch shortly.");
+      form.reset();
+    } catch (err) {
+      console.error("Email error:", err);
+      toast.success("Inquiry submitted, but there was an issue sending the email notification.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
