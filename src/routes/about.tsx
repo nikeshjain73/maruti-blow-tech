@@ -17,6 +17,19 @@ export const Route = createFileRoute("/about")({
         content: "Two decades of HDPE blow & injection moulding expertise.",
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Maruti Blow Tech Pvt. Ltd.",
+          foundingDate: "2013",
+          description: "Manufacturer of plastic blow and injection moulding articles and containers.",
+          legalName: "Maruti Blow Tech Pvt. Ltd.",
+        }),
+      },
+    ],
   }),
   component: AboutPage,
 });
@@ -36,6 +49,7 @@ const salient = [
   "High resale value",
   "Food grade virgin material",
   "Non toxic, odourless",
+  "100% Recyclable eco-friendly",
 ];
 
 function AboutPage() {
@@ -53,8 +67,8 @@ function AboutPage() {
           </div>
           <p className="text-primary-foreground/80">
             “Maruti” — an Indian mythological son of the God of Wind, a symbol of Strength,
-            Reliability and Respect. A true devotee in the service of God Rama inspires us
-            to follow the same quality in the service of our customers.
+            Reliability and Respect. A true devotee in the service of God Rama inspires us to follow
+            the same quality in the service of our customers.
           </p>
         </div>
       </section>
@@ -62,26 +76,22 @@ function AboutPage() {
       <section className="bg-background">
         <div className="container-x grid items-start gap-12 py-20 md:grid-cols-2">
           <div>
-            <SectionHead
-              eyebrow="Our Story"
-              title="Two decades of moulding expertise."
-            />
+            <SectionHead eyebrow="Our Story" title="Two decades of moulding expertise." />
             <div className="mt-6 space-y-4 text-muted-foreground">
               <p>
-                Maruti Blow Tech Pvt. Ltd. was incorporated in 2013 by a group of directors
-                who have been manufacturing plastic blow and injection moulding articles
-                and containers for the last two decades. Their vast experience has brought
-                various laurels to the company.
+                Maruti Blow Tech Pvt. Ltd. was incorporated in 2013 by a group of directors who have
+                been manufacturing plastic blow and injection moulding articles and containers for
+                the last two decades. Their vast experience has brought various laurels to the
+                company.
               </p>
               <p>
-                Maruti Blow Tech is born from the experience of the directors of an
-                existing group of companies — L.K. Continental Plastic Division and
-                Maruti Industries.
+                Maruti Blow Tech is born from the experience of the directors of an existing group
+                of companies — Krishna Plastic Industries and Maruti Industries.
               </p>
               <p>
-                When it comes to packaging, we go to the farthest point of manufacturing
-                technology perfection to provide perfect solutions in polymer drums, jerry
-                cans, mousers and carboys — conforming to international standards.
+                When it comes to packaging, we go to the farthest point of manufacturing technology
+                perfection to provide perfect solutions in polymer drums, jerry cans, mousers and
+                carboys — conforming to international standards.
               </p>
             </div>
           </div>
@@ -114,16 +124,10 @@ function AboutPage() {
 
       <section className="bg-secondary">
         <div className="container-x py-20">
-          <SectionHead
-            eyebrow="Salient Features"
-            title="What every Maruti container delivers."
-          />
+          <SectionHead eyebrow="Salient Features" title="What every Maruti container delivers." />
           <div className="mt-10 grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
             {salient.map((s) => (
-              <div
-                key={s}
-                className="flex items-center gap-3 bg-card px-5 py-4 text-sm"
-              >
+              <div key={s} className="flex items-center gap-3 bg-card px-5 py-4 text-sm">
                 <span className="h-2 w-2 shrink-0 bg-ember" />
                 <span>{s}</span>
               </div>

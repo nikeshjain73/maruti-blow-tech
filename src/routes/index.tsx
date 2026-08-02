@@ -8,16 +8,46 @@ import { SectionHead } from "@/components/site/SectionHead";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Maruti Blow Tech — HDPE Drums & Jerry Cans (50 ml to 230 L)" },
+      { title: "HDPE Plastic Drum & Jerry Can Manufacturer Ankleshwar | Maruti Blow Tech" },
       {
         name: "description",
         content:
-          "Industrial-grade HDPE plastic drums, carboys and jerry cans from 50 ml to 230 L. World-class design, zero leakage, food-grade — built in Ankleshwar, Gujarat.",
+          "Maruti Blow Tech manufactures high-performance, leak-proof HM-HDPE plastic drums, carboys, and jerry cans (50 ml to 230 L) for chemical and pharmaceutical enterprise operations in Gujarat GIDC.",
       },
-      { property: "og:title", content: "Maruti Blow Tech — HDPE Drums & Jerry Cans" },
+      {
+        name: "keywords",
+        content:
+          "HDPE drum manufacturer Ankleshwar, plastic packaging GIDC, industrial barrels Gujarat, chemical jerry cans, pharma carboys, blow moulding company Ankleshwar",
+      },
+      { property: "og:title", content: "Maruti Blow Tech | Industrial HDPE Packaging Solutions" },
       {
         property: "og:description",
-        content: "Manufacturer of HDPE plastic drums, jerry cans and carboys — 50 ml to 230 L.",
+        content: "Double-layer, UV-shielded, and food-grade plastic drums engineered for zero leakage in Ankleshwar GIDC",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "Maruti Blow Tech",
+          description: "High-performance HDPE plastic drums and jerry cans manufacturer in Gujarat",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Ankleshwar",
+            addressRegion: "Gujarat",
+            addressCountry: "IN",
+          },
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              opens: "10:00",
+              closes: "19:00",
+            },
+          ],
+        }),
       },
     ],
   }),
@@ -25,12 +55,12 @@ export const Route = createFileRoute("/")({
 });
 
 const features = [
-  { icon: Shield, title: "Zero Leakage", text: "Pilfer-proof, auto-sealing systems on every drum." },
-  { icon: Layers, title: "Multi-Layered HDPE", text: "UV-shielded outer + food-safe self-coloured inner." },
-  { icon: PackageCheck, title: "Stackable Design", text: "Excellent stack and drop strength with or without pallets." },
-  { icon: Award, title: "International Standards", text: "World-class design backed by two decades of experience." },
-  { icon: Recycle, title: "Long Life, Reusable", text: "Food-grade virgin material with strong resale value." },
-  { icon: Factory, title: "Made in Ankleshwar", text: "Manufactured in our Gujarat plant with modern automation." },
+  { icon: Shield, title: "UN Certified & Leak-Proof", text: "Pilfer-proof, auto-sealing systems engineered for safe industrial transport." },
+  { icon: Layers, title: "Multi-Layered HM-HDPE", text: "UV-shielded outer layer + food-safe, pigment-free inner layer for chemical purity." },
+  { icon: PackageCheck, title: "High Stack & Drop Strength", text: "Excellent top-load structural rigidity optimized for industrial pallet warehousing." },
+  { icon: Award, title: "ISO & Global Compliance", text: "World-class design backed by two decades of industrial manufacturing expertise." },
+  { icon: Recycle, title: "Virgin Material, Long Life", text: "100% food-grade virgin material with excellent chemical resistance and high resale value." },
+  { icon: Factory, title: "Automated Ankleshwar Plant", text: "High-capacity production line situated directly in the heart of Ankleshwar GIDC, Gujarat." },
 ];
 
 function HomePage() {
@@ -160,7 +190,8 @@ function HomePage() {
             {products.slice(0, 8).map((p) => (
               <Link
                 key={p.slug}
-                to="/products"
+                to="/products/$slug"
+                params={{ slug: p.slug }}
                 className="group relative flex flex-col overflow-hidden rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-navy/5"
               >
                 <div className="relative aspect-square w-full overflow-hidden bg-gradient-to-b from-bone/40 to-bone p-8">
@@ -184,6 +215,20 @@ function HomePage() {
                 </div>
               </Link>
             ))}
+            <Link
+              to="/contact"
+              className="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl bg-navy border border-navy transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-navy/20 p-8 text-center"
+            >
+              <div className="mb-6 rounded-full bg-primary-foreground/10 p-4 transition-transform duration-300 group-hover:scale-110">
+                <ArrowRight className="h-8 w-8 text-ember" />
+              </div>
+              <h3 className="text-xl font-bold leading-tight text-primary-foreground">
+                Custom Moulds
+              </h3>
+              <p className="mt-3 text-sm text-primary-foreground/70">
+                Need a specific size or brand colour? Let's build exactly what you need.
+              </p>
+            </Link>
           </div>
         </div>
       </section>

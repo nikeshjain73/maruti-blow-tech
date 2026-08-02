@@ -7,6 +7,8 @@ type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
 };
 
+import { products } from "./lib/products";
+
 let serverEntryPromise: Promise<ServerEntry> | undefined;
 
 async function getServerEntry(): Promise<ServerEntry> {
@@ -40,6 +42,38 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const url = new URL(request.url);
+      if (url.pathname === "/sitemap.xml" && request.method === "GET") {
+        const staticRoutes = ["/", "/about", "/contact", "/products"];
+
+        // Dynamically add product links as individual pages
+        const allRoutes = [
+          ...staticRoutes,
+          ...products.map((p) => `/products/${p.slug}`),
+        ];
+
+        const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${allRoutes
+  .map(
+    (route) => `  <url>
+    <loc>${url.origin}${route}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+    <changefreq>${route === "/" ? "daily" : "weekly"}</changefreq>
+    <priority>${route === "/" ? "1.0" : "0.8"}</priority>
+  </url>`
+  )
+  .join("\n")}
+</urlset>`;
+
+        return new Response(sitemap, {
+          headers: {
+            "Content-Type": "application/xml; charset=utf-8",
+            "Cache-Control": "public, max-age=3600, s-maxage=3600",
+          },
+        });
+      }
+
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);

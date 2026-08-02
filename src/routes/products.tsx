@@ -42,10 +42,13 @@ function ProductsPage() {
         <div className="container-x py-16">
           <div className="grid gap-8 sm:grid-cols-1 lg:grid-cols-2">
             {products.map((p, i) => (
-              <article
+              <Link
                 key={p.slug}
-                id={p.slug}
-                className="group grid overflow-hidden rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-navy/5 sm:grid-cols-5"
+                to="/products/$slug"
+                params={{ slug: p.slug }}
+                className={`group grid overflow-hidden rounded-2xl bg-card border border-border/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-navy/5 sm:grid-cols-5 ${
+                  i === products.length - 1 && products.length % 2 !== 0 ? "lg:col-span-2 lg:w-[80%] lg:mx-auto w-full" : ""
+                }`}
               >
                 <div className="relative p-6 sm:p-8 sm:col-span-2 bg-gradient-to-b from-bone/40 to-bone">
                   <img
@@ -73,7 +76,7 @@ function ProductsPage() {
                     ))}
                   </ul>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>

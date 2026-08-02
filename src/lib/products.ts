@@ -19,7 +19,7 @@ export const products: Product[] = [
   {
     slug: "narrow-mouth-drums",
     name: "Narrow Mouth Drums",
-    capacity: "50 – 70 L",
+    capacity: "50L",
     image: narrowMouth,
     tagline: "World-standard design with zero leakage and excellent drop strength.",
     features: [
@@ -33,7 +33,7 @@ export const products: Product[] = [
   {
     slug: "full-open-mouth-drums",
     name: "Full Open Mouth Drums",
-    capacity: "30 – 120 L",
+    capacity: "20 – 80L",
     image: openMouth,
     tagline: "Snap-fit clamping ring, leak-proof and air-tight.",
     features: [
@@ -47,7 +47,7 @@ export const products: Product[] = [
   {
     slug: "mouser-jerry-cans",
     name: "Mouser Jerry Cans",
-    capacity: "20 – 40 L",
+    capacity: "20 - 35L",
     image: mouser,
     tagline: "Heavy-duty mouser cans built for chemicals, pharma and food.",
     features: [
@@ -60,11 +60,11 @@ export const products: Product[] = [
   {
     slug: "wide-mouth-drums",
     name: "Wide Mouth Drums",
-    capacity: "50 L · 6\" – 10\" mouth",
+    capacity: "50 L · 6\" mouth",
     image: wideMouth,
     tagline: "Pilfer-proof sealing with a lightweight, stackable body.",
     features: [
-      "Mouth openings 6\" to 10\"",
+      "Mouth openings 6\"",
       "Pilfer-proof sealing arrangement",
       "Light weight design",
       "Specially designed for stackability",
@@ -87,7 +87,7 @@ export const products: Product[] = [
   {
     slug: "jerry-cans",
     name: "Jerry Cans",
-    capacity: "5 – 35 L",
+    capacity: "10L, 35 L",
     image: jerryCan,
     tagline: "Used across oil, chemical, pharma and adhesive industries.",
     features: [
