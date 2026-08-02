@@ -4,7 +4,6 @@ import { z } from "zod";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { toast } from "sonner";
 import { createServerFn } from "@tanstack/react-start";
-import { supabase } from "@/integrations/supabase/client";
 import { products } from "@/lib/products";
 
 export const Route = createFileRoute("/contact")({
@@ -130,21 +129,6 @@ function ContactPage() {
     }
 
     setSubmitting(true);
-    const { error } = await supabase.from("inquiries").insert({
-      name: parsed.data.name,
-      email: parsed.data.email,
-      phone: parsed.data.phone || null,
-      company: parsed.data.company || null,
-      product_interest: parsed.data.product_interest || null,
-      message: parsed.data.message,
-    });
-
-    if (error) {
-      console.error(error);
-      toast.error("Couldn't send your inquiry. Please try again or call us directly.");
-      setSubmitting(false);
-      return;
-    }
 
     try {
       await sendEmailFn({ data: parsed.data });
