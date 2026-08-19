@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Maruti Blow Tech manufactures high-performance, leak-proof HM-HDPE plastic drums, carboys, and jerry cans (50 ml to 230 L) for chemical and pharmaceutical enterprise operations in Gujarat GIDC.",
+          "Maruti Blow Tech manufactures high-performance, leak-proof HM-HDPE plastic drums, carboys, and jerry cans (10 l to 80 L) for chemical and pharmaceutical enterprise operations in Gujarat GIDC.",
       },
       {
         name: "keywords",
@@ -22,7 +22,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Maruti Blow Tech | Industrial HDPE Packaging Solutions" },
       {
         property: "og:description",
-        content: "Double-layer, UV-shielded, and food-grade plastic drums engineered for zero leakage in Ankleshwar GIDC",
+        content:
+          "Double-layer, UV-shielded, and food-grade plastic drums engineered for zero leakage in Ankleshwar GIDC",
       },
     ],
     scripts: [
@@ -55,12 +56,36 @@ export const Route = createFileRoute("/")({
 });
 
 const features = [
-  { icon: Shield, title: "UN Certified & Leak-Proof", text: "Pilfer-proof, auto-sealing systems engineered for safe industrial transport." },
-  { icon: Layers, title: "Multi-Layered HM-HDPE", text: "UV-shielded outer layer + food-safe, pigment-free inner layer for chemical purity." },
-  { icon: PackageCheck, title: "High Stack & Drop Strength", text: "Excellent top-load structural rigidity optimized for industrial pallet warehousing." },
-  { icon: Award, title: "ISO & Global Compliance", text: "World-class design backed by two decades of industrial manufacturing expertise." },
-  { icon: Recycle, title: "Virgin Material, Long Life", text: "100% food-grade virgin material with excellent chemical resistance and high resale value." },
-  { icon: Factory, title: "Automated Ankleshwar Plant", text: "High-capacity production line situated directly in the heart of Ankleshwar GIDC, Gujarat." },
+  {
+    icon: Shield,
+    title: "UN Certified & Leak-Proof",
+    text: "Pilfer-proof, auto-sealing systems engineered for safe industrial transport.",
+  },
+  {
+    icon: Layers,
+    title: "Multi-Layered HM-HDPE",
+    text: "UV-shielded outer layer + food-safe, pigment-free inner layer for chemical purity.",
+  },
+  {
+    icon: PackageCheck,
+    title: "High Stack & Drop Strength",
+    text: "Excellent top-load structural rigidity optimized for industrial pallet warehousing.",
+  },
+  {
+    icon: Award,
+    title: "ISO & Global Compliance",
+    text: "World-class design backed by two decades of industrial manufacturing expertise.",
+  },
+  {
+    icon: Recycle,
+    title: "Virgin Material, Long Life",
+    text: "100% food-grade virgin material with excellent chemical resistance and high resale value.",
+  },
+  {
+    icon: Factory,
+    title: "Automated Ankleshwar Plant",
+    text: "High-capacity production line situated directly in the heart of Ankleshwar GIDC, Gujarat.",
+  },
 ];
 
 function HomePage() {
@@ -94,8 +119,8 @@ function HomePage() {
             </h1>
             <p className="mt-6 max-w-xl text-base text-primary-foreground/80 sm:text-lg">
               Maruti Blow Tech manufactures HDPE plastic drums, jerry cans, carboys and
-              injection-moulded articles — from 50 ml to 230 L — engineered for zero leakage
-              and built to international standards.
+              injection-moulded articles — from 50 ml to 230 L — engineered for zero leakage and
+              built to international standards.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -176,7 +201,7 @@ function HomePage() {
             <SectionHead
               eyebrow="Our Range"
               title="Drums, cans & carboys for every industry."
-              intro="From narrow-mouth drums to 230-litre L-Ring barrels — all engineered for stackability, drop strength and pilfer-proof sealing."
+              intro="From narrow-mouth drums to 80-litre  all engineered for stackability, drop strength and pilfer-proof sealing."
             />
             <Link
               to="/products"
@@ -236,10 +261,7 @@ function HomePage() {
       {/* FEATURES STRIP */}
       <section className="bg-navy text-primary-foreground">
         <div className="container-x py-20">
-          <SectionHead
-            eyebrow="Salient Features"
-            title="Why MARUTI is the name to reckon with."
-          />
+          <SectionHead eyebrow="Salient Features" title="Why MARUTI is the name to reckon with." />
           <div className="mt-12 grid grid-cols-1 gap-px bg-primary-foreground/10 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
               <div key={f.title} className="bg-navy p-7">

@@ -39,7 +39,7 @@ export const sendEmailFn = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     try {
       const nodemailer = (await import("nodemailer")).default;
-      
+
       const user = process.env.EMAIL_USER || "your-email@gmail.com";
       const pass = process.env.EMAIL_PASS || "your-app-password";
 
@@ -151,8 +151,8 @@ function ContactPage() {
           </span>
           <h1 className="mt-4 text-4xl sm:text-5xl md:text-6xl">Let's talk packaging.</h1>
           <p className="mt-4 max-w-2xl text-primary-foreground/80">
-            Tell us about your application — volume, contents, branding — and our sales
-            team will respond with the right Maruti container for the job.
+            Tell us about your application — volume, contents, branding — and our sales team will
+            respond with the right Maruti container for the job.
           </p>
         </div>
       </section>
@@ -169,7 +169,8 @@ function ContactPage() {
                 <div>
                   <div className="font-bold uppercase tracking-wider text-navy">Plant Address</div>
                   <p className="mt-1 text-muted-foreground">
-                    C 1 - 4727/1/2, Opp. Rallis, G.I.D.C. Estate,<br />
+                    C 1 - 4727/1/2, Opp. Rallis, G.I.D.C. Estate,
+                    <br />
                     Ankleshwar — 393002. Gujarat, India.
                   </p>
                 </div>
@@ -180,8 +181,12 @@ function ContactPage() {
                 <div>
                   <div className="font-bold uppercase tracking-wider text-navy">Phone</div>
                   <p className="mt-1 text-muted-foreground">
-                    <a href="tel:+912646224284" className="block hover:text-ember">+91 2646 224284</a>
-                    <a href="tel:+919687987777" className="block hover:text-ember">+91 96879 87777</a>
+                    <a href="tel:+918600805782" className="block hover:text-ember">
+                      +91 86008 05782
+                    </a>
+                    <a href="tel:+918866242660" className="block hover:text-ember">
+                      +91 88662 42660
+                    </a>
                   </p>
                 </div>
               </div>
@@ -191,8 +196,9 @@ function ContactPage() {
                 <div>
                   <div className="font-bold uppercase tracking-wider text-navy">Email</div>
                   <p className="mt-1 break-all text-muted-foreground">
-                    <a href="mailto:contact@marutiblowtech.com" className="block hover:text-ember">contact@marutiblowtech.com</a>
-                    <a href="mailto:sales@marutiblowtech.com" className="block hover:text-ember">sales@marutiblowtech.com</a>
+                    <a href="mailto:marutiblowtech@yahoo.in" className="block hover:text-ember">
+                      marutiblowtech@yahoo.in
+                    </a>
                   </p>
                 </div>
               </div>
@@ -200,18 +206,19 @@ function ContactPage() {
               <div className="border-t border-border pt-6">
                 <div className="font-bold uppercase tracking-wider text-navy">Sales Team</div>
                 <p className="mt-1 text-muted-foreground">
-                  <a href="tel:+918866242660" className="block hover:text-ember">+91 88662 42660</a>
-                  <a href="tel:+919825123083" className="block hover:text-ember">+91 98251 23083</a>
+                  <a href="tel:+918866242660" className="block hover:text-ember">
+                    +91 88662 42660
+                  </a>
+                  <a href="tel:+919825123083" className="block hover:text-ember">
+                    +91 98251 23083
+                  </a>
                 </p>
               </div>
             </div>
           </aside>
 
           {/* FORM */}
-          <form
-            onSubmit={handleSubmit}
-            className="bg-card p-8 sm:p-10 md:col-span-3"
-          >
+          <form onSubmit={handleSubmit} className="bg-card p-8 sm:p-10 md:col-span-3">
             <h2 className="text-2xl text-navy">Send an Inquiry</h2>
             <p className="mt-2 text-sm text-muted-foreground">
               All fields marked with * are required.
@@ -233,7 +240,9 @@ function ContactPage() {
                 >
                   <option value="">Select a product (optional)</option>
                   {products.map((p) => (
-                    <option key={p.slug} value={p.name}>{p.name}</option>
+                    <option key={p.slug} value={p.name}>
+                      {p.name}
+                    </option>
                   ))}
                   <option value="Custom Mould">Custom Mould / Other</option>
                 </select>
@@ -281,9 +290,7 @@ function Field({
 }) {
   return (
     <div>
-      <label className="text-xs font-bold uppercase tracking-widest text-navy">
-        {label}
-      </label>
+      <label className="text-xs font-bold uppercase tracking-widest text-navy">{label}</label>
       <input
         type={type}
         name={name}
