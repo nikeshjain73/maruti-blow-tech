@@ -1,20 +1,28 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import factoryImg from "@/assets/factory.jpg";
 import { SectionHead } from "@/components/site/SectionHead";
+import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Maruti Blow Tech Pvt. Ltd." },
+      { title: "About Us — Maruti Blow Tech Pvt. Ltd. | Ankleshwar GIDC" },
       {
         name: "description",
         content:
-          "Founded in 2013 in Ankleshwar, Gujarat. Two decades of expertise in HDPE blow & injection moulding — engineered for quality, reliability and respect.",
+          "Incorporated in 2013 with 20+ years of group moulding experience. Leading manufacturer of HM-HDPE plastic drums, jerry cans & carboys in Ankleshwar, Gujarat.",
       },
-      { property: "og:title", content: "About — Maruti Blow Tech" },
+      { property: "og:title", content: "About Maruti Blow Tech — HDPE Container Manufacturer" },
       {
         property: "og:description",
-        content: "Two decades of HDPE blow & injection moulding expertise.",
+        content: "Two decades of HDPE blow and injection moulding expertise in Ankleshwar GIDC, Gujarat.",
+      },
+      { property: "og:url", content: "https://marutiblowtech.com/about" },
+    ],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://marutiblowtech.com/about",
       },
     ],
     scripts: [
@@ -22,11 +30,22 @@ export const Route = createFileRoute("/about")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Organization",
-          name: "Maruti Blow Tech Pvt. Ltd.",
-          foundingDate: "2013",
-          description: "Manufacturer of plastic blow and injection moulding articles and containers.",
-          legalName: "Maruti Blow Tech Pvt. Ltd.",
+          "@type": "AboutPage",
+          mainEntity: {
+            "@type": "Organization",
+            name: "Maruti Blow Tech Pvt. Ltd.",
+            foundingDate: "2013",
+            description: "Manufacturer of plastic blow and injection moulding articles and containers.",
+            legalName: "Maruti Blow Tech Pvt. Ltd.",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "C 1 - 4727/1/2, Opp. Rallis, G.I.D.C. Estate",
+              addressLocality: "Ankleshwar",
+              postalCode: "393002",
+              addressRegion: "Gujarat",
+              addressCountry: "IN",
+            },
+          },
         }),
       },
     ],
@@ -77,28 +96,87 @@ function AboutPage() {
         <div className="container-x grid items-start gap-12 py-20 md:grid-cols-2">
           <div>
             <SectionHead eyebrow="Our Story" title="Two decades of moulding expertise." />
-            <div className="mt-6 space-y-4 text-muted-foreground">
+            <div className="mt-6 space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 Maruti Blow Tech Pvt. Ltd. was incorporated in 2013 by a group of directors who have
                 been manufacturing plastic blow and injection moulding articles and containers for
-                the last two decades. Their vast experience has brought various laurels to the
+                the last two decades. Their vast technical experience has brought various laurels to the
                 company.
               </p>
               <p>
                 Maruti Blow Tech is born from the experience of the directors of an existing group
-                of companies — Krishna Plastic Industries and Maruti Industries.
+                of companies — Krishna Plastic Industries and Maruti Industries. Operating from our automated facility in{" "}
+                <Link
+                  to="/hdpe-drum-manufacturer-ankleshwar-gujarat"
+                  className="font-semibold text-navy underline decoration-ember hover:text-ember"
+                >
+                  Ankleshwar GIDC, Gujarat
+                </Link>
+                , we serve key industrial chemical hubs across Bharuch, Dahej, Vadodara, and western India.
               </p>
               <p>
                 When it comes to packaging, we go to the farthest point of manufacturing technology
                 perfection to provide perfect solutions in polymer drums, jerry cans, mousers and
-                carboys — conforming to international standards.
+                carboys — conforming to international standards. Discover our diverse{" "}
+                <Link
+                  to="/products"
+                  className="font-semibold text-navy underline decoration-ember hover:text-ember"
+                >
+                  HDPE product catalog
+                </Link>
+                , including specialised{" "}
+                <Link
+                  to="/products/narrow-mouth-drums"
+                  className="font-semibold text-navy underline decoration-ember hover:text-ember"
+                >
+                  narrow mouth drums
+                </Link>
+                , robust{" "}
+                <Link
+                  to="/products/full-open-mouth-drums"
+                  className="font-semibold text-navy underline decoration-ember hover:text-ember"
+                >
+                  full open mouth drums
+                </Link>
+                , and branded{" "}
+                <Link
+                  to="/custom-mould-drums"
+                  className="font-semibold text-ember underline hover:text-navy"
+                >
+                  custom-mould drums
+                </Link>
+                .
+              </p>
+              <p>
+                We also offer sector-focused solutions designed specifically for{" "}
+                <Link
+                  to="/industries/chemical-packaging"
+                  className="font-semibold text-navy underline decoration-ember hover:text-ember"
+                >
+                  chemical packaging
+                </Link>{" "}
+                as well as certified{" "}
+                <Link
+                  to="/industries/pharma-and-food-grade-packaging"
+                  className="font-semibold text-navy underline decoration-ember hover:text-ember"
+                >
+                  pharmaceutical & food-grade packaging
+                </Link>
+                . For help choosing container types and neck specifications, consult our practical{" "}
+                <Link
+                  to="/guides/how-to-choose-an-hdpe-drum"
+                  className="font-semibold text-navy underline decoration-ember hover:text-ember"
+                >
+                  HDPE drum selection guide
+                </Link>
+                .
               </p>
             </div>
           </div>
           <div>
             <img
               src={factoryImg}
-              alt="Maruti Blow Tech manufacturing facility"
+              alt="Maruti Blow Tech manufacturing facility in Ankleshwar GIDC"
               width={1600}
               height={1024}
               loading="lazy"
@@ -144,6 +222,14 @@ function AboutPage() {
               title="Beyond commitment to customer in quality and service."
               intro="We believe in development of individuals within the organization to develop the organization. We strive to provide total customer service under one roof — 24 × 365."
             />
+            <div className="mt-6">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 bg-ember px-6 py-3.5 text-sm font-bold uppercase tracking-wider text-accent-foreground hover:opacity-90 transition-opacity"
+              >
+                Inquire With Our Sales Team <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

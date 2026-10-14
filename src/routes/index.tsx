@@ -25,6 +25,13 @@ export const Route = createFileRoute("/")({
         content:
           "Double-layer, UV-shielded, and food-grade plastic drums engineered for zero leakage in Ankleshwar GIDC",
       },
+      { property: "og:url", content: "https://marutiblowtech.com" },
+    ],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://marutiblowtech.com",
+      },
     ],
     scripts: [
       {
@@ -167,6 +174,25 @@ function HomePage() {
               title="Two layers. One drum. Built to outlast its contents."
               intro="Our containers use a dark outer layer that blocks ultraviolet radiation and resists ageing, and a self-coloured inner layer that prevents pigment contamination — engineered from virgin HDPE for excellent rigidity, creep resistance and stress-cracking resistance."
             />
+            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+              Whether deploying our heavy-duty{" "}
+              <Link
+                to="/products/$slug"
+                params={{ slug: "narrow-mouth-drums" }}
+                className="font-semibold text-navy underline decoration-ember hover:text-ember"
+              >
+                narrow mouth drums
+              </Link>{" "}
+              for hazardous liquid transit or utilizing wide-access{" "}
+              <Link
+                to="/products/$slug"
+                params={{ slug: "full-open-mouth-drums" }}
+                className="font-semibold text-navy underline decoration-ember hover:text-ember"
+              >
+                full open mouth drums
+              </Link>{" "}
+              with snap-fit clamping rings for bulk chemicals and pastes, Maruti packaging provides zero leakage across the entire supply chain.
+            </p>
             <div className="mt-8 grid grid-cols-2 gap-6 text-sm">
               <div className="border-l-4 border-drum pl-4">
                 <div className="font-display text-base text-navy">Outer Layer</div>
@@ -201,7 +227,7 @@ function HomePage() {
             <SectionHead
               eyebrow="Our Range"
               title="Drums, cans & carboys for every industry."
-              intro="From narrow-mouth drums to 80-litre  all engineered for stackability, drop strength and pilfer-proof sealing."
+              intro="From narrow-mouth drums to 80-litre full open top containers, all engineered for stackability, drop strength and pilfer-proof sealing."
             />
             <Link
               to="/products"
@@ -241,7 +267,7 @@ function HomePage() {
               </Link>
             ))}
             <Link
-              to="/contact"
+              to="/custom-mould-drums"
               className="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl bg-navy border border-navy transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-navy/20 p-8 text-center"
             >
               <div className="mb-6 rounded-full bg-primary-foreground/10 p-4 transition-transform duration-300 group-hover:scale-110">
@@ -251,7 +277,7 @@ function HomePage() {
                 Custom Moulds
               </h3>
               <p className="mt-3 text-sm text-primary-foreground/70">
-                Need a specific size or brand colour? Let's build exactly what you need.
+                Need custom-mould drums in brand colours? Let's build exactly what you need.
               </p>
             </Link>
           </div>
@@ -285,10 +311,10 @@ function HomePage() {
               </p>
             </div>
             <Link
-              to="/contact"
+              to="/custom-mould-drums"
               className="inline-flex items-center gap-2 bg-ember px-6 py-4 text-sm font-bold uppercase tracking-wider text-accent-foreground hover:opacity-90"
             >
-              Start the Conversation <ArrowRight className="h-4 w-4" />
+              Custom Mould Drums <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
