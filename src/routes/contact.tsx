@@ -9,16 +9,23 @@ import { products } from "@/lib/products";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Maruti Blow Tech Pvt. Ltd. (Ankleshwar, Gujarat)" },
+      { title: "Contact Maruti Blow Tech | HDPE Drum Manufacturer Ankleshwar" },
       {
         name: "description",
         content:
-          "Get in touch with Maruti Blow Tech in Ankleshwar, Gujarat. Send an inquiry, request a quote or reach our sales team for HDPE drums, jerry cans and carboys.",
+          "Contact Maruti Blow Tech Pvt. Ltd. in Ankleshwar GIDC, Gujarat. Request commercial quotes, custom mould tooling, and technical specs for HDPE drums and jerry cans.",
       },
-      { property: "og:title", content: "Contact — Maruti Blow Tech" },
+      { property: "og:title", content: "Contact Maruti Blow Tech | HDPE Drum Manufacturer Ankleshwar" },
       {
         property: "og:description",
-        content: "Reach our sales team for HDPE drums, jerry cans and carboys.",
+        content: "Get commercial pricing and packaging advice from our Ankleshwar sales engineering team.",
+      },
+      { property: "og:url", content: "https://marutiblowtech.com/contact" },
+    ],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://marutiblowtech.com/contact",
       },
     ],
   }),
