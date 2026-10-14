@@ -43,8 +43,32 @@ export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
       const url = new URL(request.url);
+      if (url.pathname === "/robots.txt" && request.method === "GET") {
+        const robots = `User-agent: *
+Allow: /
+
+Sitemap: ${url.origin}/sitemap.xml
+`;
+        return new Response(robots, {
+          headers: {
+            "Content-Type": "text/plain; charset=utf-8",
+            "Cache-Control": "public, max-age=3600, s-maxage=3600",
+          },
+        });
+      }
+
       if (url.pathname === "/sitemap.xml" && request.method === "GET") {
-        const staticRoutes = ["/", "/about", "/contact", "/products"];
+        const staticRoutes = [
+          "/",
+          "/about",
+          "/contact",
+          "/products",
+          "/custom-mould-drums",
+          "/hdpe-drum-manufacturer-ankleshwar-gujarat",
+          "/industries/chemical-packaging",
+          "/industries/pharma-and-food-grade-packaging",
+          "/guides/how-to-choose-an-hdpe-drum",
+        ];
 
         // Dynamically add product links as individual pages
         const allRoutes = [
@@ -60,7 +84,7 @@ ${allRoutes
     <loc>${url.origin}${route}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>${route === "/" ? "daily" : "weekly"}</changefreq>
-    <priority>${route === "/" ? "1.0" : "0.8"}</priority>
+    <priority>${route === "/" ? "1.0" : route.startsWith("/products/") ? "0.9" : "0.8"}</priority>
   </url>`
   )
   .join("\n")}
