@@ -10,14 +10,30 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProductsRouteImport } from './routes/products'
+import { Route as HdpeDrumManufacturerAnkleshwarGujaratRouteImport } from './routes/hdpe-drum-manufacturer-ankleshwar-gujarat'
+import { Route as CustomMouldDrumsRouteImport } from './routes/custom-mould-drums'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsSlugRouteImport } from './routes/products_.$slug'
+import { Route as IndustriesPharmaAndFoodGradePackagingRouteImport } from './routes/industries.pharma-and-food-grade-packaging'
+import { Route as IndustriesChemicalPackagingRouteImport } from './routes/industries.chemical-packaging'
+import { Route as GuidesHowToChooseAnHdpeDrumRouteImport } from './routes/guides.how-to-choose-an-hdpe-drum'
 
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HdpeDrumManufacturerAnkleshwarGujaratRoute =
+  HdpeDrumManufacturerAnkleshwarGujaratRouteImport.update({
+    id: '/hdpe-drum-manufacturer-ankleshwar-gujarat',
+    path: '/hdpe-drum-manufacturer-ankleshwar-gujarat',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CustomMouldDrumsRoute = CustomMouldDrumsRouteImport.update({
+  id: '/custom-mould-drums',
+  path: '/custom-mould-drums',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -40,19 +56,47 @@ const ProductsSlugRoute = ProductsSlugRouteImport.update({
   path: '/products/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IndustriesPharmaAndFoodGradePackagingRoute =
+  IndustriesPharmaAndFoodGradePackagingRouteImport.update({
+    id: '/industries/pharma-and-food-grade-packaging',
+    path: '/industries/pharma-and-food-grade-packaging',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const IndustriesChemicalPackagingRoute =
+  IndustriesChemicalPackagingRouteImport.update({
+    id: '/industries/chemical-packaging',
+    path: '/industries/chemical-packaging',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GuidesHowToChooseAnHdpeDrumRoute =
+  GuidesHowToChooseAnHdpeDrumRouteImport.update({
+    id: '/guides/how-to-choose-an-hdpe-drum',
+    path: '/guides/how-to-choose-an-hdpe-drum',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/custom-mould-drums': typeof CustomMouldDrumsRoute
+  '/hdpe-drum-manufacturer-ankleshwar-gujarat': typeof HdpeDrumManufacturerAnkleshwarGujaratRoute
   '/products': typeof ProductsRoute
+  '/guides/how-to-choose-an-hdpe-drum': typeof GuidesHowToChooseAnHdpeDrumRoute
+  '/industries/chemical-packaging': typeof IndustriesChemicalPackagingRoute
+  '/industries/pharma-and-food-grade-packaging': typeof IndustriesPharmaAndFoodGradePackagingRoute
   '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/custom-mould-drums': typeof CustomMouldDrumsRoute
+  '/hdpe-drum-manufacturer-ankleshwar-gujarat': typeof HdpeDrumManufacturerAnkleshwarGujaratRoute
   '/products': typeof ProductsRoute
+  '/guides/how-to-choose-an-hdpe-drum': typeof GuidesHowToChooseAnHdpeDrumRoute
+  '/industries/chemical-packaging': typeof IndustriesChemicalPackagingRoute
+  '/industries/pharma-and-food-grade-packaging': typeof IndustriesPharmaAndFoodGradePackagingRoute
   '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRoutesById {
@@ -60,20 +104,50 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/custom-mould-drums': typeof CustomMouldDrumsRoute
+  '/hdpe-drum-manufacturer-ankleshwar-gujarat': typeof HdpeDrumManufacturerAnkleshwarGujaratRoute
   '/products': typeof ProductsRoute
+  '/guides/how-to-choose-an-hdpe-drum': typeof GuidesHowToChooseAnHdpeDrumRoute
+  '/industries/chemical-packaging': typeof IndustriesChemicalPackagingRoute
+  '/industries/pharma-and-food-grade-packaging': typeof IndustriesPharmaAndFoodGradePackagingRoute
   '/products_/$slug': typeof ProductsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/products' | '/products/$slug'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/custom-mould-drums'
+    | '/hdpe-drum-manufacturer-ankleshwar-gujarat'
+    | '/products'
+    | '/guides/how-to-choose-an-hdpe-drum'
+    | '/industries/chemical-packaging'
+    | '/industries/pharma-and-food-grade-packaging'
+    | '/products/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/products' | '/products/$slug'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/custom-mould-drums'
+    | '/hdpe-drum-manufacturer-ankleshwar-gujarat'
+    | '/products'
+    | '/guides/how-to-choose-an-hdpe-drum'
+    | '/industries/chemical-packaging'
+    | '/industries/pharma-and-food-grade-packaging'
+    | '/products/$slug'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
+    | '/custom-mould-drums'
+    | '/hdpe-drum-manufacturer-ankleshwar-gujarat'
     | '/products'
+    | '/guides/how-to-choose-an-hdpe-drum'
+    | '/industries/chemical-packaging'
+    | '/industries/pharma-and-food-grade-packaging'
     | '/products_/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -81,7 +155,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  CustomMouldDrumsRoute: typeof CustomMouldDrumsRoute
+  HdpeDrumManufacturerAnkleshwarGujaratRoute: typeof HdpeDrumManufacturerAnkleshwarGujaratRoute
   ProductsRoute: typeof ProductsRoute
+  GuidesHowToChooseAnHdpeDrumRoute: typeof GuidesHowToChooseAnHdpeDrumRoute
+  IndustriesChemicalPackagingRoute: typeof IndustriesChemicalPackagingRoute
+  IndustriesPharmaAndFoodGradePackagingRoute: typeof IndustriesPharmaAndFoodGradePackagingRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
 }
 
@@ -92,6 +171,20 @@ declare module '@tanstack/react-router' {
       path: '/products'
       fullPath: '/products'
       preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hdpe-drum-manufacturer-ankleshwar-gujarat': {
+      id: '/hdpe-drum-manufacturer-ankleshwar-gujarat'
+      path: '/hdpe-drum-manufacturer-ankleshwar-gujarat'
+      fullPath: '/hdpe-drum-manufacturer-ankleshwar-gujarat'
+      preLoaderRoute: typeof HdpeDrumManufacturerAnkleshwarGujaratRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/custom-mould-drums': {
+      id: '/custom-mould-drums'
+      path: '/custom-mould-drums'
+      fullPath: '/custom-mould-drums'
+      preLoaderRoute: typeof CustomMouldDrumsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -122,6 +215,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/industries/pharma-and-food-grade-packaging': {
+      id: '/industries/pharma-and-food-grade-packaging'
+      path: '/industries/pharma-and-food-grade-packaging'
+      fullPath: '/industries/pharma-and-food-grade-packaging'
+      preLoaderRoute: typeof IndustriesPharmaAndFoodGradePackagingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries/chemical-packaging': {
+      id: '/industries/chemical-packaging'
+      path: '/industries/chemical-packaging'
+      fullPath: '/industries/chemical-packaging'
+      preLoaderRoute: typeof IndustriesChemicalPackagingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/how-to-choose-an-hdpe-drum': {
+      id: '/guides/how-to-choose-an-hdpe-drum'
+      path: '/guides/how-to-choose-an-hdpe-drum'
+      fullPath: '/guides/how-to-choose-an-hdpe-drum'
+      preLoaderRoute: typeof GuidesHowToChooseAnHdpeDrumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -129,7 +243,14 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  CustomMouldDrumsRoute: CustomMouldDrumsRoute,
+  HdpeDrumManufacturerAnkleshwarGujaratRoute:
+    HdpeDrumManufacturerAnkleshwarGujaratRoute,
   ProductsRoute: ProductsRoute,
+  GuidesHowToChooseAnHdpeDrumRoute: GuidesHowToChooseAnHdpeDrumRoute,
+  IndustriesChemicalPackagingRoute: IndustriesChemicalPackagingRoute,
+  IndustriesPharmaAndFoodGradePackagingRoute:
+    IndustriesPharmaAndFoodGradePackagingRoute,
   ProductsSlugRoute: ProductsSlugRoute,
 }
 export const routeTree = rootRouteImport
